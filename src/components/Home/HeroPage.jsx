@@ -1,0 +1,122 @@
+import { useState, useEffect, useRef } from "react";
+
+import { UserAuth } from "../../context/AuthContext";
+import { db } from "../../firebase.config";
+import { doc, getDoc } from "firebase/firestore";
+import ReactPlayer from "react-player";
+import { NavLink } from "react-router-dom";
+
+const Hero = () => {
+  const [userName, setUserName] = useState("");
+  const scrollRef = useRef(null);
+  const { user } = UserAuth();
+  const playerRef = useRef(null);
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        if (user) {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+
+          if (userDoc.exists()) {
+            setUserName(userDoc.data().username);
+          } else {
+            console.log("No such document!");
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch user name", error);
+      }
+    };
+    fetchUserName();
+  }, [user]);
+
+  const handleScroll = () => {
+    scrollRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="">
+      <div style={{ position: "relative", zIndex: -1 }}>
+ <ReactPlayer
+  url="https://youtu.be/CrgYEbIQkac?t=167"
+  playing
+  loop
+  muted
+  width="1920px"
+  height="1080px"
+  style={{ position: "absolute", top: 0, left: 0 }}
+  config={{
+    youtube: {
+      playerVars: {
+        controls: 0,
+        showinfo: 0,
+        autoplay: 1,
+        loop: 1,
+      },
+    },
+  }}
+  onProgress={({ playedSeconds }) => {
+    const startTime = 166; // start time in seconds
+    const endTime = 326; // end time in seconds
+
+    if (playedSeconds >= endTime) {
+      playerRef.current.seekTo(startTime);
+    }
+  }}
+  ref={playerRef}
+/>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "110%",
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.9) 80%, rgba(0,0,0,1) 96%)",
+        }}
+      />
+      <div
+        className=" min-h-screen text-white"
+        style={{ position: "relative", zIndex: 2}}
+      >
+        <div className="min-h-screen pt-60 p-20">
+          <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative ">
+            <span className="w-20 h-2 bg-gray-100 dark:bg-white mb-12"></span>
+            <h1 className="font-bebas-neue uppercase text-6xl sm:text-8xl font-black flex flex-col leading-none dark:text-white text-gray-100">
+              Be on
+              <span className="text-6xl sm:text-8xl">Time</span>
+            </h1>
+            <p className="text-3xl pt-12 text-gray-100 mb-10">
+              Join the world's biggest and most passionate space community and
+              get connected with space enthusiasts from all around the world!
+            </p>
+          </div>
+          <div className="flex  mt-8">
+            <button
+              className="uppercase  py-2 px-4 rounded-lg bg-cyan-500 border-2 border-transparent text-white text-2xl mr-4 hover:bg-cyan-400 hover:text-black"
+              onClick={handleScroll}
+            >
+              Get started
+            </button>
+            {!user && (
+            <NavLink
+            to="/signup"
+            className="uppercase py-2 pl-4 pr-6 ml-4 rounded-lg bg-transparent border-2 border-cyan-500 text-cyan-500 dark:text-white hover:bg-cyan-500 hover:text-white text-2xl"
+          >
+            Sign Up
+          </NavLink>
+            )}
+          </div>
+        </div>
+        <div ref={scrollRef} className="">
+          <div></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

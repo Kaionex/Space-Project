@@ -1,0 +1,368 @@
+
+#examWrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-container {
+    width: 800px;
+    height: 300px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    color: white;
+    
+    
+ 
+  }
+
+  .slider-content {
+    display: flex;
+    transition: transform 0.5s ease;
+ 
+    
+    
+    
+   
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.284);
+    transition: width 0.5s, height 0.5s;
+    text-align: center;
+    padding: 10px;
+    
+  }
+  .questionsDiv{
+  position: absolute;
+  width: 95%;
+  top: 50%;
+     
+      transform: translate(-0%, -50%); /* Moves the element back by half its own height and width */
+      
+  }
+
+  .question {
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 100px;
+  }
+  .options p{
+    text-align: left;
+    
+    
+  }
+  .options h1{
+    font-size: 20px;
+  }
+
+  .options label {
+    display: block;
+    
+  }
+
+  .options input[type="radio"] {
+    display: none;
+    
+  }
+
+  .options input[type="radio"] + label {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    width: 140px;
+    vertical-align: middle;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    max-height: 150px;
+    overflow:auto;
+   
+    
+  }
+
+  .options input[type="radio"]:checked + label {
+    
+    color: white;
+    
+  }
+
+  .expanded {
+height: 800px;
+
+  }
+table {
+  font-size: 16px;
+  border: 1px solid rgb(107, 107, 107);
+  width: 100%;
+  border-collapse: collapse;
+
+}
+table tr:nth-child(even) {
+  background-color: #686868;
+}
+table td{
+  border: 1px dashed rgba(0, 0, 0, 0.129);
+}
+.tableWrapper{
+  height: 500px;
+  overflow: scroll;
+  clear: both;
+
+  
+}
+
+.topReport{
+  text-align: left;
+  line-height: 50px;
+  width: 700px;
+  height: 170px;
+}
+.reportText{
+  width: 450px;
+  float: left;
+}
+.badgesShow{
+  width: 200px;
+  height: 100px;
+  float: right;
+  text-align: center;
+ margin-top: -50px;
+     font-size: 14px;    
+     line-height: 18px;
+           
+
+}
+.badgesShow p{
+  position: relative;
+  bottom: 0;
+}
+.imageShow{
+  min-height: 100px;
+}
+.badgesShow .badgeImg{
+  width: 120px;
+  margin:0 auto;
+  animation: rotate 10s 3s ease-in-out infinite;
+ 
+ 
+  
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(-45deg);
+  }
+  50% {
+      transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+}
+}
+.closeButton{
+ position: relative;
+ right: -360px;
+ top: -0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrapper{
+  width: 100%;
+  height: 400px;
+  background-image: url("./assets/backQuiz.png");     
+  background-repeat: no-repeat; 
+  background-size: cover;
+  
+  
+ }
+ .inner{
+  width: 1000px;
+  height: 100%;
+  
+  margin: 0 auto;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.096);
+  z-index: 0;
+ }
+.left{
+  width: 70%;
+  height: 100%;
+  float: left;
+  padding: 100px;
+  padding-right: 0px;
+  padding-top: 70px;
+  box-sizing: border-box;
+
+}
+.right{
+  width: 30%;
+  height: 100%;
+  background-image:url("./assets/solar.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  float: right;
+  
+}
+.content{
+  height: 110px;
+  overflow: hidden;
+  background-color: #91919179; /* Green background */
+      border: none; /* Remove borders */
+      color: white; /* White text */
+      padding: 15px 15px; /* Some padding */
+      text-align: center; /* Centered text */
+      text-decoration: none; /* Remove underline */
+      display: inline-block; /* Make the container element behave like an inline element */
+      font-size: 16px; /* Increase font size */
+      margin: 4px 2px; /* Some margin */
+      cursor: pointer; /* Pointer/hand icon */
+      border-radius: 8px;
+      
+      transition: background-color 0.1s, transform 0.1s;
+ 
+}
+.content:hover {
+      background-color: #383838; /* Darker green background on hover */
+      transform: scale(1.05); /* Slightly increase size on hover */
+  }
+.book{
+  background-image: url("./assets/book.png");
+  width: 60px;
+  height: 100px;
+  background-size: contain ;
+  background-repeat: no-repeat;
+  display: inline-block;
+  float: left;
+  margin-top: 10px;
+}
+.text{
+  float: left;
+  margin-left: 20px;
+}
+.text h1{
+  font-size: 22px;
+  color: white;
+  font-family: "Reddit Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight:600;
+font-style: normal;
+margin-top: 20px;
+
+}
+
+.left p{
+  color: white;
+}
+.clear{
+  clear: both;
+  margin-bottom: 20px;
+}
+.clear p{
+  font-size: 20px;
+}
+.badges ol{
+  padding: 0px;
+  margin: -20px;
+}
+.badges li{
+  float: left;
+  width: 80px;
+  
+}
+.badges li img{
+  width: 80px;
+}
+
+
+
+
+.loader {
+  border: 8px solid rgba(0, 0, 0, 0.1); /* Light gray background border */
+  border-top: 8px solid #3498db; /* Blue top border */
+  border-radius: 50%; /* Makes the loader round */
+  width: 50px; /* Loader width */
+  height: 50px; /* Loader height */
+  animation: spin 1s linear infinite; /* Spin animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Center the loader on the page */
+.loader-container {
+  position: fixed; /* Stay fixed in place */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(70, 58, 58, 0); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            
+}
+
+.overLay {
+  position: fixed; /* Stay fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.776); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0; /* Ensure it's above other content */
+  
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+.webglCanvas {
+  width: 200px;
+   height: 200px;
+   
+   transition: transform 0.8s ease;
+   border-radius: 210px;
+
+  }
+
